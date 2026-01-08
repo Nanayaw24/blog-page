@@ -1,4 +1,4 @@
-// State and utilities
+
 const state = {
   posts: [],
   filtered: [],
@@ -48,52 +48,52 @@ const els = {
   toasts: document.getElementById('toasts')
 };
 
-// Extended posts with metadata
+
 const postsData = [
-  // Scholarships
+  
   { id: 1, title: "Top 10 Fully Funded Scholarships for Ghanaian Students (2026/2027)", category: "Scholarship", tags: ["funding","ghana","global","masters","phd"], image: "https://picsum.photos/640/360?random=101", date: "2026-01-02", body: "Explore scholarships in the US, UK, Canada, and Europe for Ghanaian students seeking study abroad opportunities." },
   { id: 2, title: "DAAD Scholarships for African Students in Germany", category: "Scholarship", tags: ["germany","daad","postgraduate"], image: "https://picsum.photos/640/360?random=102", date: "2025-12-20", body: "The DAAD program offers full funding for postgraduate studies in Germany, including tuition and living expenses." },
   { id: 3, title: "Mastercard Foundation Scholarships at African Universities", category: "Scholarship", tags: ["mastercard","africa","undergraduate","leadership"], image: "https://picsum.photos/640/360?random=103", date: "2025-12-15", body: "Partner universities provide scholarships for talented Ghanaian students with leadership potential." },
   { id: 4, title: "Chevening Scholarships for Ghanaian Students in the UK", category: "Scholarship", tags: ["uk","chevening","postgraduate"], image: "https://picsum.photos/640/360?random=104", date: "2025-11-20", body: "The UK government offers Chevening scholarships for postgraduate study, covering tuition and living costs." },
 
-  // Visa
+  
   { id: 5, title: "How to Apply for a US Visa (2026 Update)", category: "Visa", tags: ["usa","visa","interview","student","tourist"], image: "https://picsum.photos/640/360?random=105", date: "2026-01-03", body: "Step-by-step guide for Ghanaian applicants seeking student, tourist, or work visas to the United States." },
   { id: 6, title: "Canada Visa Application Process for Ghanaians", category: "Visa", tags: ["canada","visa","study","tourism"], image: "https://picsum.photos/640/360?random=106", date: "2025-12-28", body: "Learn the requirements, documents, and interview tips for Canadian study and tourist visas." },
   { id: 7, title: "Mexico Visa Tips for Ghanaian Travelers", category: "Visa", tags: ["mexico","visa","documents"], image: "https://picsum.photos/640/360?random=107", date: "2025-12-12", body: "Essential information for applying for a Mexican visa, including embassy contacts and processing times." },
   { id: 8, title: "Visa Interview Preparation for Ghanaian Students", category: "Visa", tags: ["interview","prep","tips"], image: "https://picsum.photos/640/360?random=108", date: "2025-11-30", body: "Tips and common questions to help Ghanaian students succeed in visa interviews abroad." },
 
-  // University News
+  
   { id: 9, title: "Oxford University Ranked #1 Globally in 2026", category: "University News", tags: ["rankings","oxford","THE"], image: "https://picsum.photos/640/360?random=109", date: "2025-12-10", body: "Times Higher Education ranks Oxford as the top university worldwide for the 10th consecutive year." },
   { id: 10, title: "MIT Tops QS World Rankings 2026", category: "University News", tags: ["rankings","MIT","QS"], image: "https://picsum.photos/640/360?random=110", date: "2025-12-18", body: "MIT continues to lead in innovation and research excellence." },
   { id: 11, title: "Harvard Expands Scholarships for International Students", category: "University News", tags: ["harvard","funding","international"], image: "https://picsum.photos/640/360?random=111", date: "2025-12-06", body: "Harvard announces new funding opportunities for African students, including Ghanaians." },
   { id: 12, title: "University of Toronto Launches Africa Partnership Program", category: "University News", tags: ["toronto","partnership","exchange"], image: "https://picsum.photos/640/360?random=112", date: "2025-12-02", body: "Toronto expands collaborations with African universities, offering exchange programs and scholarships." },
 
-  // Current Affairs
+  
   { id: 13, title: "World Cup 2026 Host Countries: USA, Canada, Mexico", category: "Current Affairs", tags: ["fifa","worldcup","2026","hosts"], image: "https://picsum.photos/640/360?random=113", date: "2025-12-22", body: "The FIFA World Cup 2026 will be jointly hosted by the USA, Canada, and Mexico, with matches across 16 cities." },
   { id: 14, title: "Black Stars Road to World Cup 2026", category: "Current Affairs", tags: ["ghana","blackstars","qualifiers"], image: "https://picsum.photos/640/360?random=114", date: "2025-12-08", body: "Updates on Ghana’s qualification journey and preparations for the FIFA World Cup." },
   { id: 15, title: "Canada Prepares for FIFA World Cup 2026", category: "Current Affairs", tags: ["canada","hosts","cities"], image: "https://picsum.photos/640/360?random=115", date: "2025-12-05", body: "Canadian cities gear up for hosting matches, with infrastructure and tourism opportunities expanding." },
   { id: 16, title: "Mexico’s Cultural Showcase During FIFA World Cup", category: "Current Affairs", tags: ["mexico","culture","events"], image: "https://picsum.photos/640/360?random=116", date: "2025-11-25", body: "Mexico plans cultural festivals alongside World Cup matches to highlight its heritage." },
 
-  // Opportunities
+  
   { id: 17, title: "Opportunities to Support Black Star Abroad", category: "Opportunities", tags: ["exchange","sports","culture"], image: "https://picsum.photos/640/360?random=117", date: "2025-12-01", body: "Scholarships and cultural exchange programs that help Ghanaians support the Black Star." },
   { id: 18, title: "Internships for Ghanaian Students in North America", category: "Opportunities", tags: ["internship","usa","canada"], image: "https://picsum.photos/640/360?random=118", date: "2025-11-18", body: "Paid internship opportunities across top companies in the USA and Canada." }
 ];
 
-// Initialize
+
 function init() {
-  // Load dark mode/pinned state
+  
   state.darkMode = localStorage.getItem('cc-dark') === 'true';
   state.pinnedId = parseInt(localStorage.getItem('cc-pinned') || '0', 10) || null;
   if (state.darkMode) document.body.classList.add('dark');
 
-  // Build tags
+  
   postsData.forEach(p => p.tags.forEach(t => state.tags.add(t)));
   renderTags();
 
-  // Prepare skeletons
+  
   showSkeletons(8);
 
-  // Simulate async load
+  
   setTimeout(() => {
     state.posts = postsData.slice();
     applySort('newest');
@@ -105,12 +105,12 @@ function init() {
     animateReveal();
   }, 600);
 
-  // Bind events
+  
   bindEvents();
 }
 document.addEventListener('DOMContentLoaded', init);
 
-// Events
+
 function bindEvents() {
   els.closeTopbar.addEventListener('click', () => els.topbar.remove());
   els.navToggle.addEventListener('click', () => els.navLinks.classList.toggle('open'));
@@ -126,15 +126,15 @@ function bindEvents() {
   els.tagList.addEventListener('click', handleTagClick);
   els.newsletterForm.addEventListener('submit', subscribeNewsletter);
 
-  // Modal close
+  
   els.modalClose.addEventListener('click', closeModal);
   els.modalBackdrop.addEventListener('click', closeModal);
 
-  // Sticky nav style on scroll
+  
   window.addEventListener('scroll', handleScrollEffects);
 }
 
-// Dark mode
+
 function toggleDarkMode() {
   document.body.classList.toggle('dark');
   state.darkMode = document.body.classList.contains('dark');
@@ -142,7 +142,7 @@ function toggleDarkMode() {
   els.toggleMode.textContent = state.darkMode ? '☀️' : '🌙';
 }
 
-// Skeletons
+
 function showSkeletons(count = 6) {
   els.skeletonGrid.innerHTML = '';
   for (let i = 0; i < count; i++) {
@@ -155,7 +155,7 @@ function hideSkeletons() {
   els.skeletonGrid.innerHTML = '';
 }
 
-// Sort
+
 function applySort(mode) {
   switch (mode) {
     case 'newest':
@@ -175,7 +175,7 @@ function applySort(mode) {
   }
 }
 
-// Featured
+
 function renderFeatured() {
   const post = state.pinnedId ? state.posts.find(p => p.id === state.pinnedId) : state.posts.slice().sort((a,b)=>new Date(b.date)-new Date(a.date))[0];
   if (!post) return;
@@ -186,7 +186,7 @@ function renderFeatured() {
   els.featuredDate.textContent = formatDate(post.date);
   els.featuredRead.dataset.id = post.id;
 
-  // Pin on double-click
+  
   els.featuredImg.ondblclick = () => {
     state.pinnedId = post.id;
     localStorage.setItem('cc-pinned', String(post.id));
@@ -194,14 +194,14 @@ function renderFeatured() {
   };
 }
 
-// Latest
+
 function renderLatest() {
   els.latestContainer.innerHTML = '';
   const latest = state.filtered.slice(0, state.latestCount);
   latest.forEach(p => els.latestContainer.appendChild(postCard(p, true)));
 }
 
-// Pagination
+
 function buildPagination() {
   const totalPages = Math.ceil(state.filtered.length / state.perPage);
   els.pageNumbers.innerHTML = '';
@@ -240,7 +240,7 @@ function renderPage(page = 1) {
   items.forEach(p => els.blogContainer.appendChild(postCard(p)));
 }
 
-// Cards
+
 function postCard(p, compact = false) {
   const card = document.createElement('article');
   card.className = compact ? 'latest-card reveal' : 'blog-card reveal';
@@ -298,7 +298,7 @@ function postCard(p, compact = false) {
   return card;
 }
 
-// Category filter
+
 function handleCategoryClick(e) {
   const btn = e.target.closest('.chip');
   if (!btn) return;
@@ -311,7 +311,7 @@ function handleCategoryClick(e) {
   showToast(`Filtered by ${cat}`);
 }
 
-// Tags
+
 function renderTags() {
   els.tagList.innerHTML = '';
   Array.from(state.tags).slice(0, 20).forEach(tag => {
@@ -334,7 +334,7 @@ function handleTagClick(e) {
   showToast(`Filtered by tag #${tag}`);
 }
 
-// Search with highlight
+
 function handleSearch() {
   const q = els.searchInput.value.trim().toLowerCase();
   if (!q) { applySort(els.sortSelect.value); renderLatest(); renderPage(1); buildPagination(); return; }
@@ -360,7 +360,7 @@ function highlightQuery(q) {
 }
 function escapeRegExp(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 
-// Modal
+
 function openFeaturedModal() {
   const id = parseInt(els.featuredRead.dataset.id, 10);
   openPostModal(id);
@@ -381,7 +381,7 @@ function closeModal() {
   els.postModal.setAttribute('aria-hidden', 'true');
 }
 
-// Metrics counters
+
 function animateCounters() {
   const nums = document.querySelectorAll('.metric-number');
   nums.forEach(n => {
@@ -396,7 +396,7 @@ function animateCounters() {
   });
 }
 
-// Reveal animations
+
 function animateReveal() {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -410,13 +410,13 @@ function animateReveal() {
   animateCounters();
 }
 
-// Scroll effects
+
 function handleScrollEffects() {
   const scrolled = window.scrollY > 60;
   els.navbar.style.boxShadow = scrolled ? '0 6px 18px rgba(2,6,23,0.08)' : 'none';
 }
 
-// Newsletter
+
 function subscribeNewsletter(e) {
   e.preventDefault();
   const email = document.getElementById('newsletterEmail').value.trim();
@@ -426,7 +426,7 @@ function subscribeNewsletter(e) {
   showToast('Subscribed successfully!'); e.target.reset();
 }
 
-// Toast
+
 function showToast(text) {
   const t = document.createElement('div');
   t.className = 'toast';
@@ -436,7 +436,7 @@ function showToast(text) {
   setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 200); }, 2200);
 }
 
-// Format date
+
 function formatDate(d) {
   try {
     const date = new Date(d);
@@ -444,4 +444,4 @@ function formatDate(d) {
   } catch { return d; }
   }
   
-/* End of scrript.js */
+
