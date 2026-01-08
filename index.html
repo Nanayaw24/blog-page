@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consistency Consult Blog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Top Notification Bar -->
+  <div class="topbar" id="topbar">
+    <span>Welcome to Consistency Consult — Scholarships, Visa Guidance, and Global Opportunities for Ghanaians.</span>
+    <button class="topbar-close" aria-label="Close notification" id="closeTopbar">✕</button>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="brand" aria-label="Home">Consistency Consult</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#latestPosts">Latest</a></li>
+      <li><a href="#metrics">Impact</a></li>
+      <li><a href="#blogContainer">Posts</a></li>
+      <li><a href="#about">About</a></li>
+      <li><button id="toggleMode" class="mode-btn" aria-label="Toggle dark mode">🌙</button></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="hero">
+    <div class="hero-content">
+      <h1 class="reveal">Study Abroad & Visa Guidance</h1>
+      <p class="reveal">Scholarships, opportunities, and visa support for Ghanaian students and travelers.</p>
+      <div class="hero-actions reveal">
+        <a href="#latestPosts" class="btn primary">Explore Latest</a>
+        <a href="#blogContainer" class="btn ghost">Browse Posts</a>
+      </div>
+    </div>
+    <div class="hero-overlay"></div>
+  </header>
+
+  <!-- Featured Post -->
+  <section class="featured" id="featured">
+    <div class="featured-inner">
+      <div class="featured-image">
+        <img id="featuredImage" src="blog.jpeg.png" alt="Featured post" />
+      </div>
+      <div class="featured-content">
+        <h2 id="featuredTitle"></h2>
+        <p id="featuredExcerpt"></p>
+        <div class="featured-meta">
+          <span class="badge" id="featuredCategory"></span>
+          <span class="date" id="featuredDate"></span>
+        </div>
+        <div class="featured-actions">
+          <button class="btn primary" id="featuredRead">Read more</button>
+          <button class="btn ghost" id="unpinFeatured">Unpin</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Posts -->
+  <section class="latest-posts" id="latestPosts">
+    <div class="section-header">
+      <h2>Latest posts</h2>
+      <div class="controls">
+        <select id="sortSelect" aria-label="Sort posts">
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+          <option value="a-z">A–Z</option>
+          <option value="z-a">Z–A</option>
+        </select>
+        <input type="text" id="searchInput" placeholder="Search posts..." aria-label="Search posts">
+      </div>
+    </div>
+    <div class="latest-container" id="latestContainer">
+      <!-- Latest cards injected by JS -->
+    </div>
+  </section>
+
+  <!-- Metrics / Counters -->
+  <section class="metrics" id="metrics">
+    <div class="metric-card">
+      <span class="metric-number" data-target="1200">0</span>
+      <span class="metric-label">Students guided</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-number" data-target="350">0</span>
+      <span class="metric-label">Scholarships listed</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-number" data-target="900">0</span>
+      <span class="metric-label">Visa applicants supported</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-number" data-target="26">0</span>
+      <span class="metric-label">Countries covered</span>
+    </div>
+  </section>
+
+  <!-- Main Layout -->
+  <div class="main-layout">
+    <!-- Posts -->
+    <section class="blog-container" id="blogContainer">
+      <!-- Skeleton loaders -->
+      <div class="skeleton-grid" id="skeletonGrid"></div>
+      <!-- Blog cards injected by JS -->
+    </section>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h3>Categories</h3>
+      <ul class="category-list" id="categoryList">
+        <li><button class="chip" data-cat="Scholarship">Scholarships</button></li>
+        <li><button class="chip" data-cat="Visa">Visa Applications</button></li>
+        <li><button class="chip" data-cat="Opportunities">Opportunities</button></li>
+        <li><button class="chip" data-cat="University News">University News</button></li>
+        <li><button class="chip" data-cat="Current Affairs">Current Affairs</button></li>
+      </ul>
+
+      <h3>Popular tags</h3>
+      <div class="tags" id="tagList">
+        <!-- Tags injected by JS -->
+      </div>
+
+      <h3>Newsletter</h3>
+      <form class="newsletter" id="newsletterForm">
+        <input type="email" id="newsletterEmail" placeholder="Email address" required>
+        <button class="btn primary" type="submit">Subscribe</button>
+        <small class="privacy">We respect your privacy.</small>
+      </form>
+    </aside>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination" id="pagination">
+    <button class="page-btn" data-page="prev">Prev</button>
+    <div class="page-numbers" id="pageNumbers"></div>
+    <button class="page-btn" data-page="next">Next</button>
+  </div>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <h2>About Consistency Consult</h2>
+    <p>We empower Ghanaian students and travelers with accurate scholarship information and visa guidance for the USA, Canada, Mexico, and beyond.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 Consistency Consult — Supporting Black Star Dreams.</p>
+      <button id="scrollTop" class="scroll-top" aria-label="Scroll to top">↑</button>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="postModal" aria-hidden="true" role="dialog">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-content" role="document">
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      <img id="modalImg" alt="Post">
+      <h3 id="modalTitle"></h3>
+      <div class="modal-meta">
+        <span class="badge" id="modalCategory"></span>
+        <span class="date" id="modalDate"></span>
+      </div>
+      <p id="modalBody"></p>
+    </div>
+  </div>
+
+  <!-- Toasts -->
+  <div class="toasts" id="toasts"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
